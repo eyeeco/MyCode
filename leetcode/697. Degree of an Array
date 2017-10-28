@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        map<int,int> count,hash;
+        int len = nums.size();
+        int degree = 0;
+        for(int i=0;i<nums.size();i++){
+            if(!count[nums[i]])  hash[nums[i]] = i;
+            count[nums[i]]++;
+            if(count[nums[i]]>degree){
+                degree = count[nums[i]];
+                len = i - hash[nums[i]] +1 ;
+            }
+            if(count[nums[i]] == degree)
+                len = min(len,(i - hash[nums[i]] +1));
+        }
+        return len;
+    }
+};
