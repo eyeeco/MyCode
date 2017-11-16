@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        map<int,int> hash;
+        vector<int> res;
+        for(int i=0;i<numbers.size();i++){
+            if(hash[numbers[i]]){
+                res.push_back(hash[numbers[i]]);
+                res.push_back(i+1);
+                return res;
+            }
+            hash[(target - numbers[i] )] = i+1;
+        }
+        return res;
+    }
+};
