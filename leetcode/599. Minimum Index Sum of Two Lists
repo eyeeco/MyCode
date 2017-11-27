@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
+        unordered_map<string,int> hash;
+        vector<string> res;
+        int max_num = INT_MAX;
+        for(int i=0;i<list1.size();i++) {hash[list1[i]]=i+1;}
+        for(int i=0;i<list2.size();i++){
+            if(hash[list2[i]]){
+                if((hash[list2[i]]+i)<max_num){
+                    res.clear();
+                    res.push_back(list2[i]);
+                    max_num = hash[list2[i]]+i;
+                }else if((hash[list2[i]]+i)==max_num){
+                    res.push_back(list2[i]);
+                }
+            }
+        }
+        return res;
+    }
+};

@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums) {
+        map<int,int> hash;
+        vector<int> res;
+        for(int i=0;i<nums.size();i++){
+            hash[nums[i]]=-1;
+            for(int j=i+1;j<nums.size();j++){
+                if(nums[i]<nums[j]) {hash[nums[i]]=nums[j]; break;}
+            }
+        }
+        for(auto num:findNums)   res.push_back(hash[num]);
+        return res;
+    }
+};

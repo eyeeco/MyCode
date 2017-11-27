@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& nums) {
+        vector<pair<int,int>> arr;
+        vector<string> res(nums.size());
+        for(int i=0;i<nums.size();i++){
+            arr.push_back(make_pair(i,nums[i]));
+        }
+        sort(arr.begin(),arr.end(),[](pair<int,int>num1,pair<int,int>num2){return num1.second>num2.second;});
+        for(int i=0;i<arr.size();i++){
+            if(i==0) res[arr[0].first] = "Gold Medal";
+            if(i==1) res[arr[1].first] = "Silver Medal";
+            if(i==2) res[arr[2].first] = "Bronze Medal";
+            if(i>2) res[arr[i].first] = to_string(i+1);
+        }
+        return res;
+    }
+};
