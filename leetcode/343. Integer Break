@@ -1,0 +1,22 @@
+class Solution {
+    
+private:
+    vector<int> res;
+    
+public:
+    Solution(){
+        res.resize(60);    
+        res[1]=1;
+    };
+    
+    int integerBreak(int n) {
+        int maxNum = 0;
+        for(int i=1;i<=n/2;i++){
+            if(!res[i]) res[i]=integerBreak(i);
+            if(!res[n-i]) res[n-i]=integerBreak(n-i);
+            maxNum = max(maxNum,max(i,res[i])*max(n-i,res[n-i]));
+        }
+        res[n]=maxNum;
+        return maxNum;
+    };
+};
