@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int findMinDifference(vector<string>& timePoints) {
+        vector<int> num ;
+        int time,minNum=INT_MAX;
+        for(string str:timePoints){
+            time=str[0]*10*60+str[1]*60+str[3]*10+str[4];
+            num.push_back(time);
+        }
+        sort(num.begin(),num.end());
+        for(int i = 1;i<num.size();i++){
+            minNum = min(minNum,num[i]-num[i-1]);
+        }
+        minNum = min(minNum,num[0]+24*60-num[num.size()-1]);
+        return minNum;
+    }
+};
