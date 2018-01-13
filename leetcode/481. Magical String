@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int magicalString(int n) {
+        vector<int> t,p;
+        t.push_back(1);
+        t.push_back(2);
+        t.push_back(2);
+        int i=2;
+        while(t.size()<n){
+            if(t[i]==1){
+                t.push_back(1);
+            }else{
+                t.push_back(1);
+                t.push_back(1);
+            }
+            i++;
+            if(t[i]==1){
+                t.push_back(2);
+            }else{
+                t.push_back(2);
+                t.push_back(2);
+            }
+            i++;
+        }
+        int res =0;
+        for(int k=0;k<n;k++){
+            if(t[k]==1) res++;
+        }
+        return res;
+    }
+};

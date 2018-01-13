@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        map<char,int> res;
+        int num = 0,flag=0;
+        for(char letter:s){
+            res[letter]++;
+        }
+        for(auto it:res){
+            if(it.second%2==0){
+                num+=it.second;
+            }else{
+                flag=1;
+                num+=it.second-1;
+            }
+        }
+        if(flag){
+            return (num+1);
+        }
+        else{
+            return num;
+        }
+    }
+};
