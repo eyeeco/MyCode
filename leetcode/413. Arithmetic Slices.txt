@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int numberOfArithmeticSlices(vector<int>& A){
+        if(A.size()<3)  return 0;
+        vector<int> temp(A.size()-2,0);
+        int sum=0;
+        for(int start =0;start<A.size()-2;start++ ){
+            if(A[start]+A[start+2]==2*A[start+1]) {
+                temp[start]=1;
+                sum++;
+            }
+        }
+        for(int L = 3;L<A.size();L++){
+            for(int start =0;start<A.size()-L;start++ ){
+                   if(temp[start]&&temp[start+1]){
+                       temp[start]=1;
+                       sum++;
+                   }else{
+                       temp[start]=0;
+                   }
+            }
+        }
+        return sum;
+    }
+};

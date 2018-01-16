@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int countPrimeSetBits(int L, int R) {
+        map<int,int> hash;
+        vector<int> res(R+1,0);
+        res[0]=0;
+        res[1]=1;
+        int sum=0;
+        hash[2]=1;
+        hash[3]=1;
+        hash[5]=1;
+        hash[7]=1;
+        hash[11]=1;
+        hash[13]=1;
+        hash[17]=1;
+        hash[19]=1;
+        for(int i=2;i<=R;i++){
+            res[i]=res[(i&(i-1))]+1;
+        }
+        for(int i=L;i<=R;i++){
+            if(hash[res[i]]) sum++;
+        }
+        return sum;
+    }
+};
