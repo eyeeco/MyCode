@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        stack<int> desk;
+        int sum=0,num1,num2;
+        for(string str :ops){
+            if(str=="C"){
+                sum-=desk.top();
+                desk.pop();
+            }else if(str=="+"){
+                num1 = desk.top();
+                desk.pop();
+                num2 = desk.top();
+                sum+=(num1+num2);
+                desk.push(num1);
+                desk.push(num1+num2);
+            }else if(str=="D"){
+                sum+=desk.top()*2;
+                desk.push(desk.top()*2);
+            }else{
+                stringstream ss;
+                ss<<str;
+                ss>>num1;
+                desk.push(num1);
+                sum+=num1;
+            }
+        }
+        return sum;
+    }
+};
