@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+        map<char,int> hash;
+        vector<pair<char,int>> res;
+        string out;
+        for(char p:s){
+            hash[p]++;
+        }
+        for(auto child: hash){
+            res.push_back(make_pair(child.first,child.second));
+        }
+        sort(res.begin(),res.end(),[](auto a,auto b){return a.second>b.second;});
+        for(auto child:res){
+            int p = child.second;
+            while(p--){
+                out.push_back(child.first);
+            }
+        }
+        return out;
+        
+        
+    }
+};
