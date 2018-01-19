@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int numberOfBoomerangs(vector<pair<int, int>>& points) {
+        map<int,int> hash;
+        int sum=0,temp;
+        for(int i=0;i<points.size();i++){
+            hash.clear();
+            for(int j=0;j<points.size();j++){
+                temp = pow((points[i].first-points[j].first),2)+pow((points[i].second-points[j].second),2);
+                hash[temp]++;
+            }
+            for(auto item:hash){
+                sum+=(item.second-1)*item.second;
+            }
+        }
+        return sum;
+    }
+};
