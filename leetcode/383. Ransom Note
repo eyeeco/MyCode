@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        map<char,int> hash;
+        for(char item : ransomNote)  hash[item]--;
+        for(char item : magazine) hash[item]++;
+        for(auto item:hash){
+            if(item.second<0) return false;
+        }
+        return true;
+    }
+};
