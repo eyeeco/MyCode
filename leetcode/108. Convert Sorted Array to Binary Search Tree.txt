@@ -15,7 +15,7 @@ public:
             TreeNode* root = new TreeNode(nums[mid]);
             root->left = bulidTree(nums,left,mid-1);
             root->right = bulidTree(nums,mid+1,right);
-            return root;
+            return root ;
         }
         return NULL;
     }
