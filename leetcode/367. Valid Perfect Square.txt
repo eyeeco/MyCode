@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        int loss = 1;
+        while(num>0){
+            num-= loss;
+            if(num==0) return true;
+            loss+=2;
+        }
+        return false;
+    }
+};
