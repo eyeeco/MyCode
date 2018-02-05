@@ -76,7 +76,6 @@ def callback1():
     selected = source.selected['1d']['indices']
     source_add.data = dict(x=x_embedded[selected,0],y=x_embedded[selected,1],id=selected)
 
-
 def callback2():
     global colors
     selected = source.selected['1d']['indices']
