@@ -9,7 +9,7 @@ public:
                 temp = i-max(hash[s[i]],node)+1;
                 node=max(node,hash[s[i]]);
                 hash[s[i]] = i + 1 ;
-            } 
+            }
         res =max(res,temp);
         }
         return res;
