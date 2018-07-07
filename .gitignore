@@ -109,3 +109,6 @@ htmlcov/
 *.swp
 tmp/
 .idea/
+
+# Code
+# CodingCounter/
