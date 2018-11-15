@@ -8,20 +8,41 @@
  */
 class Solution {
 public:
-    ListNode* oddEvenList(ListNode* head) {
-        if(head==NULL||head->next==NULL) return head;
-        ListNode* head2 = head->next;
-        ListNode* p = head;
-        while(p&&p->next){
-            ListNode* temp = p->next;
-            p->next = p->next->next;
-            p = temp;
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* p1 = l1;
+        ListNode* p2 = l2;
+        int flag = 0;
+        while(p1!=NULL&&p2!=NULL){
+            int sum = p1->val + p2->val + flag;
+            flag = sum/10;
+            p1->val = sum%10;
+            if(p1->next==NULL) break;
+            p1=p1->next;
+            p2=p2->next;
         }
-        p = head;
-        while(p&&p->next){
-            p=p->next;
+        if(p2){
+            if(p2->next){
+                p1->next = p2->next;
+                p1 = p2->next;
+            }else{
+                if(flag==1){
+                    ListNode* temp = new ListNode(1);
+                    p1->next = temp;
+                    return l1;
+                }
+            }
         }
-        p->next = head2;
-        return head;
+        while(p1&&flag){
+            int sum = p1->val + flag;
+            p1->val = sum%10;
+            flag = sum/10;
+            if(p1->next==NULL) break;
+            p1=p1->next;
+        }
+        if(flag==1){
+            ListNode* temp = new ListNode(1);
+            p1->next = temp;
+        }
+        return l1;
     }
 };
