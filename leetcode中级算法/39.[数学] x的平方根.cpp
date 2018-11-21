@@ -14,3 +14,18 @@ public:
         return left-1;
     }
 };
+
+// 牛顿法
+class Solution{
+public:
+    int mySqrt(int x){
+        double x0 = 1.0;
+        double eps = 0.01;
+        double x1;
+        while(1){
+            x1 = (x0 + x/x0)/2;
+            if(abs(x1*x1-x)<eps) break;
+            else x = x1;
+        }
+    }
+}
