@@ -9,6 +9,7 @@ public:
         }
         return sum;
     }
+    
     bool isHappy(int n) {
         set<int> con = {4,16,37,58,89,145,42,20};
         while(n!=1){
