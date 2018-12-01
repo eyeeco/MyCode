@@ -6,6 +6,7 @@ public:
         }
         return 0;
     }
+    
     void gameOfLife(vector<vector<int>>& board) {
         vector<vector<int>>cp(board);
         for(int i=0;i<cp.size();i++){
